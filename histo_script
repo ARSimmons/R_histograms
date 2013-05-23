@@ -1,0 +1,17 @@
+## R script for reading .xls files and plotting histogram of one column
+## Authors B. Steffen, A. Simmons
+## Requires xlsReadWrite library
+
+data <- read.csv( file.choose(), sep=",", header=TRUE)
+summary(data)
+
+improveValues <- data$ImprValue;
+noBlanksImproveValues <- improveValues[!is.na(improveValues)];
+
+brk <- c(0, 900, 9000, 12000, 15000, 18000, 24000, 27000, 30000, 90000, 300000, 900000, 3000000, 9000000, 30000000, 9000000, 40000000)
+
+hist(noBlanksImproveValues)
+
+testData <- c(1,2,2,3,3,3,4,5,100)
+filteredData <- testData[testData < 5]
+hist(filteredData)
